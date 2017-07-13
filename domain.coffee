@@ -10,9 +10,6 @@ _run = (path, executable, callback) ->
 
 	_running = ChildProcess.exec "#{executable} --sketch=#{path} --output=#{path}build --force --run"
 
-	_running.on "exit", (code, signal) ->
-		_running = null
-
 	_running.stdout.on "data", (data) ->
 		_domainManager.emitEvent _domain_id, "data", data
 

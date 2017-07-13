@@ -16,9 +16,6 @@
       treekill(_running.pid);
     }
     _running = ChildProcess.exec("" + executable + " --sketch=" + path + " --output=" + path + "build --force --run");
-    _running.on("exit", function(code, signal) {
-      return _running = null;
-    });
     _running.stdout.on("data", function(data) {
       return _domainManager.emitEvent(_domain_id, "data", data);
     });
