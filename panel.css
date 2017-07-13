@@ -1,0 +1,9 @@
+#processing_lang .scrollable {
+  height: 100%;
+  overflow-y: scroll; }
+#processing_lang .text-danger {
+  color: #cc3d3d; }
+#processing_lang .console {
+  padding: 10px;
+  font-family: monospace;
+  white-space: pre; }

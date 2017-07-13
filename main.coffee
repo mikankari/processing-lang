@@ -1,24 +1,27 @@
 define (require, exports, module) ->
 
+	ExtensionUtils = brackets.getModule "utils/ExtensionUtils"
 	LanguageManager = brackets.getModule "language/LanguageManager"
+	PreferencesManager = brackets.getModule "preferences/PreferencesManager"
+	NodeDomain = brackets.getModule "utils/NodeDomain"
 	DocumentManager = brackets.getModule "document/DocumentManager"
 	CommandManager = brackets.getModule "command/CommandManager"
 	Commands = brackets.getModule "command/Commands"
 	Menus = brackets.getModule "command/Menus"
-	FileSystem = brackets.getModule "filesystem/FileSystem"
 	ProjectManager = brackets.getModule "project/ProjectManager"
+	PanelManager = brackets.getModule "view/PanelManager"
 
-	command_id = "io.github.mikankari.processing-lang.new-project"
+	extension_id = "processing_lang"
+	extension_path = ExtensionUtils.getModulePath module
 
-	LanguageManager.defineLanguage "processing", {
-		"name": "Processing"
-		"mode": "clike"
-		"fileExtensions": ["pde"]
-		"blockComment": ["/*", "*/"]
-		"lineComment": ["//"]
-	}
+	createPanel = ->
+		$ require "text!panel.html"
+			.find ".close"
+			.on "click", ->
+				panel.close()
+			.end()
 
-	newProjectHandler = ->
+	newSketchHandler = ->
 		date = new Date()
 		name = [
 			"sketch_"
@@ -43,7 +46,52 @@ define (require, exports, module) ->
 			.done (document) ->
 				document.setText require "text!template.pde"
 
-	CommandManager.register "New Processing Project", command_id, newProjectHandler
+	runSketchHandler = ->
+		CommandManager.execute Commands.FILE_SAVE_ALL
 
-	file_menu = Menus.getMenu Menus.AppMenuBar.FILE_MENU
-	file_menu.addMenuItem command_id, null, Menus.AFTER, Commands.FILE_NEW_UNTITLED
+		path = DocumentManager.getCurrentDocument()
+			.file.parentPath
+
+		executable = preferences.get "executable"
+
+		domain.exec "run", path, executable
+
+		$ "##{extension_id} .console"
+			.empty()
+
+		panel.show()
+
+	LanguageManager.defineLanguage "processing", {
+		"name": "Processing"
+		"mode": "clike"
+		"fileExtensions": ["pde"]
+		"blockComment": ["/*", "*/"]
+		"lineComment": ["//"]
+	}
+
+	preferences = PreferencesManager.getExtensionPrefs extension_id
+	preferences.definePreference "executable", "string", "/usr/local/bin/processing-java"
+
+	domain = new NodeDomain "#{extension_id}-run", "#{extension_path}domain"
+
+	domain.on "data", (event, data) ->
+		$ "##{extension_id} .console"
+			.append "<div>#{data}</div>"
+
+	domain.on "error", (event, error) ->
+		$ "##{extension_id} .console"
+			.append "<div class=\"text-danger\">#{error}</div>"
+
+	CommandManager.register "New Sketch", "#{extension_id}-new", newSketchHandler
+	CommandManager.register "Run", "#{extension_id}-run", runSketchHandler
+
+	Menus.addMenu "Processing", extension_id, Menus.AFTER, Menus.AppMenuBar.NAVIGATE_MENU
+	menu = Menus.getMenu extension_id
+	menu.addMenuItem "#{extension_id}-new", null
+	menu.addMenuDivider()
+	menu.addMenuItem "#{extension_id}-run", null
+
+	panel = PanelManager.createBottomPanel "#{extension_id}-panel", createPanel(), 100
+
+	ExtensionUtils.loadStyleSheet module, "panel.css"
+
