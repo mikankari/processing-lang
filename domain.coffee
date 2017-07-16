@@ -6,17 +6,22 @@ _running = null
 _domain_id = "processing_lang-run"
 
 _run = (path, executable, callback) ->
-	treekill _running.pid if _running?
+	_stop ->
+		_running = ChildProcess.exec "#{executable} --sketch=#{path} --output=#{path}build --force --run"
 
-	_running = ChildProcess.exec "#{executable} --sketch=#{path} --output=#{path}build --force --run"
+		_running.stdout.on "data", (data) ->
+			_domainManager.emitEvent _domain_id, "data", data
 
-	_running.stdout.on "data", (data) ->
-		_domainManager.emitEvent _domain_id, "data", data
+		_running.stderr.on "data", (data) ->
+			_domainManager.emitEvent _domain_id, "error", data
 
-	_running.stderr.on "data", (data) ->
-		_domainManager.emitEvent _domain_id, "error", data
+		callback()
 
-	callback()
+_stop = (callback) ->
+	if _running?
+		treekill _running.pid, "SIGTERM", callback
+	else
+		callback()
 
 exports.init = (DomainManager) ->
 	if not DomainManager.hasDomain _domain_id
@@ -29,19 +34,26 @@ exports.init = (DomainManager) ->
 		"run",
 		_run,
 		true,
-		"execute",
+		"run a sketch",
 		[
 			{
 				"name": "path"
 				"type": "string"
-				"description": ""
+				"description": "path for a sketch direcotry"
 			}
 			{
 				"name": "executable"
 				"type": "string"
-				"description": ""
+				"description": "path for the processing-java file"
 			}
 		],
+		[]
+	DomainManager.registerCommand _domain_id,
+		"stop"
+		_stop
+		true
+		"stop a running sketch"
+		[]
 		[]
 
 	DomainManager.registerEvent _domain_id,
@@ -50,6 +62,7 @@ exports.init = (DomainManager) ->
 			{
 				"name": "data"
 				"type": "string"
+				"description": "stdout text from a running sketch"
 			}
 		]
 	DomainManager.registerEvent _domain_id,
@@ -58,6 +71,7 @@ exports.init = (DomainManager) ->
 			{
 				"name": "error"
 				"type": "string"
+				"description": "stderr text from a running sketch"
 			}
 		]
 

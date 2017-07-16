@@ -1,6 +1,6 @@
 (function() {
   define(function(require, exports, module) {
-    var CommandManager, Commands, DocumentManager, ExtensionUtils, LanguageManager, Menus, NodeDomain, PanelManager, PreferencesManager, ProjectManager, createPanel, domain, extension_id, extension_path, menu, newSketchHandler, panel, preferences, runSketchHandler;
+    var CommandManager, Commands, DocumentManager, ExtensionUtils, LanguageManager, Menus, NodeDomain, PanelManager, PreferencesManager, ProjectManager, createPanel, domain, extension_id, extension_path, menu, newSketchHandler, panel, preferences, runSketchHandler, stopSketchHandler;
     ExtensionUtils = brackets.getModule("utils/ExtensionUtils");
     LanguageManager = brackets.getModule("language/LanguageManager");
     PreferencesManager = brackets.getModule("preferences/PreferencesManager");
@@ -39,6 +39,9 @@
       $("#" + extension_id + " .console").empty();
       return panel.show();
     };
+    stopSketchHandler = function() {
+      return domain.exec("stop");
+    };
     LanguageManager.defineLanguage("processing", {
       "name": "Processing",
       "mode": "clike",
@@ -57,11 +60,12 @@
     });
     CommandManager.register("New Sketch", "" + extension_id + "-new", newSketchHandler);
     CommandManager.register("Run", "" + extension_id + "-run", runSketchHandler);
-    Menus.addMenu("Processing", extension_id, Menus.AFTER, Menus.AppMenuBar.NAVIGATE_MENU);
-    menu = Menus.getMenu(extension_id);
+    CommandManager.register("Stop", "" + extension_id + "-stop", stopSketchHandler);
+    menu = Menus.addMenu("Processing", extension_id, Menus.AFTER, Menus.AppMenuBar.NAVIGATE_MENU);
     menu.addMenuItem("" + extension_id + "-new", null);
     menu.addMenuDivider();
     menu.addMenuItem("" + extension_id + "-run", null);
+    menu.addMenuItem("" + extension_id + "-stop", null);
     panel = PanelManager.createBottomPanel("" + extension_id + "-panel", createPanel(), 100);
     return ExtensionUtils.loadStyleSheet(module, "panel.css");
   });

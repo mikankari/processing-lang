@@ -61,6 +61,9 @@ define (require, exports, module) ->
 
 		panel.show()
 
+	stopSketchHandler = ->
+		domain.exec "stop"
+
 	LanguageManager.defineLanguage "processing", {
 		"name": "Processing"
 		"mode": "clike"
@@ -84,12 +87,13 @@ define (require, exports, module) ->
 
 	CommandManager.register "New Sketch", "#{extension_id}-new", newSketchHandler
 	CommandManager.register "Run", "#{extension_id}-run", runSketchHandler
+	CommandManager.register "Stop", "#{extension_id}-stop", stopSketchHandler
 
-	Menus.addMenu "Processing", extension_id, Menus.AFTER, Menus.AppMenuBar.NAVIGATE_MENU
-	menu = Menus.getMenu extension_id
+	menu = Menus.addMenu "Processing", extension_id, Menus.AFTER, Menus.AppMenuBar.NAVIGATE_MENU
 	menu.addMenuItem "#{extension_id}-new", null
 	menu.addMenuDivider()
 	menu.addMenuItem "#{extension_id}-run", null
+	menu.addMenuItem "#{extension_id}-stop", null
 
 	panel = PanelManager.createBottomPanel "#{extension_id}-panel", createPanel(), 100
 
