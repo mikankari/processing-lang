@@ -4,12 +4,15 @@ define (require, exports, module) ->
 	LanguageManager = brackets.getModule "language/LanguageManager"
 	PreferencesManager = brackets.getModule "preferences/PreferencesManager"
 	NodeDomain = brackets.getModule "utils/NodeDomain"
+	CodeHintManager = brackets.getModule "editor/CodeHintManager"
 	DocumentManager = brackets.getModule "document/DocumentManager"
 	CommandManager = brackets.getModule "command/CommandManager"
 	Commands = brackets.getModule "command/Commands"
 	Menus = brackets.getModule "command/Menus"
 	ProjectManager = brackets.getModule "project/ProjectManager"
 	PanelManager = brackets.getModule "view/PanelManager"
+
+	ProcessingCodeHints = require "codehints"
 
 	extension_id = "processing_lang"
 	extension_path = ExtensionUtils.getModulePath module
@@ -92,6 +95,9 @@ define (require, exports, module) ->
 	domain.on "error", (event, error) ->
 		$ "##{extension_id} .console"
 			.append "<div class=\"text-danger\">#{secureOutput error}</div>"
+
+	codehints = new ProcessingCodeHints()
+	CodeHintManager.registerHintProvider codehints, ["processing"], 0
 
 	CommandManager.register "New Sketch", "#{extension_id}-new", newSketchHandler
 	CommandManager.register "Run", "#{extension_id}-run", runSketchHandler
