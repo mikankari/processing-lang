@@ -21,6 +21,15 @@ define (require, exports, module) ->
 				panel.close()
 			.end()
 
+	securePath = (path) ->
+		if path.indexOf " " isnt -1 then "\"#{path}\"" else path
+
+	secureOutput = (data) ->
+		secured = data
+		secured = secured.replace /&/g, "&amp;"
+		secured = secured.replace /</g, "&lt;"
+		secured = secured.replace />/g, "&gt;"
+
 	newSketchHandler = ->
 		date = new Date()
 		name = [
@@ -49,10 +58,9 @@ define (require, exports, module) ->
 	runSketchHandler = ->
 		CommandManager.execute Commands.FILE_SAVE_ALL
 
-		path = DocumentManager.getCurrentDocument()
-			.file.parentPath
+		path = securePath DocumentManager.getCurrentDocument().file.parentPath
 
-		executable = preferences.get "executable"
+		executable = securePath preferences.get "executable"
 
 		domain.exec "run", path, executable
 
@@ -79,11 +87,11 @@ define (require, exports, module) ->
 
 	domain.on "data", (event, data) ->
 		$ "##{extension_id} .console"
-			.append "<div>#{data}</div>"
+			.append "<div>#{secureOutput data}</div>"
 
 	domain.on "error", (event, error) ->
 		$ "##{extension_id} .console"
-			.append "<div class=\"text-danger\">#{error}</div>"
+			.append "<div class=\"text-danger\">#{secureOutput error}</div>"
 
 	CommandManager.register "New Sketch", "#{extension_id}-new", newSketchHandler
 	CommandManager.register "Run", "#{extension_id}-run", runSketchHandler

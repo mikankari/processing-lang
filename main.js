@@ -1,6 +1,6 @@
 (function() {
   define(function(require, exports, module) {
-    var CommandManager, Commands, DocumentManager, ExtensionUtils, LanguageManager, Menus, NodeDomain, PanelManager, PreferencesManager, ProjectManager, createPanel, domain, extension_id, extension_path, menu, newSketchHandler, panel, preferences, runSketchHandler, stopSketchHandler;
+    var CommandManager, Commands, DocumentManager, ExtensionUtils, LanguageManager, Menus, NodeDomain, PanelManager, PreferencesManager, ProjectManager, createPanel, domain, extension_id, extension_path, menu, newSketchHandler, panel, preferences, runSketchHandler, secureOutput, securePath, stopSketchHandler;
     ExtensionUtils = brackets.getModule("utils/ExtensionUtils");
     LanguageManager = brackets.getModule("language/LanguageManager");
     PreferencesManager = brackets.getModule("preferences/PreferencesManager");
@@ -18,6 +18,20 @@
         return panel.close();
       }).end();
     };
+    securePath = function(path) {
+      if (path.indexOf(" " !== -1)) {
+        return "\"" + path + "\"";
+      } else {
+        return path;
+      }
+    };
+    secureOutput = function(data) {
+      var secured;
+      secured = data;
+      secured = secured.replace(/&/g, "&amp;");
+      secured = secured.replace(/</g, "&lt;");
+      return secured = secured.replace(/>/g, "&gt;");
+    };
     newSketchHandler = function() {
       var date, name;
       date = new Date();
@@ -33,8 +47,8 @@
     runSketchHandler = function() {
       var executable, path;
       CommandManager.execute(Commands.FILE_SAVE_ALL);
-      path = DocumentManager.getCurrentDocument().file.parentPath;
-      executable = preferences.get("executable");
+      path = securePath(DocumentManager.getCurrentDocument().file.parentPath);
+      executable = securePath(preferences.get("executable"));
       domain.exec("run", path, executable);
       $("#" + extension_id + " .console").empty();
       return panel.show();
@@ -53,10 +67,10 @@
     preferences.definePreference("executable", "string", "/usr/local/bin/processing-java");
     domain = new NodeDomain("" + extension_id + "-run", "" + extension_path + "domain");
     domain.on("data", function(event, data) {
-      return $("#" + extension_id + " .console").append("<div>" + data + "</div>");
+      return $("#" + extension_id + " .console").append("<div>" + (secureOutput(data)) + "</div>");
     });
     domain.on("error", function(event, error) {
-      return $("#" + extension_id + " .console").append("<div class=\"text-danger\">" + error + "</div>");
+      return $("#" + extension_id + " .console").append("<div class=\"text-danger\">" + (secureOutput(error)) + "</div>");
     });
     CommandManager.register("New Sketch", "" + extension_id + "-new", newSketchHandler);
     CommandManager.register("Run", "" + extension_id + "-run", runSketchHandler);
