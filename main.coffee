@@ -10,7 +10,7 @@ define (require, exports, module) ->
 	Commands = brackets.getModule "command/Commands"
 	Menus = brackets.getModule "command/Menus"
 	ProjectManager = brackets.getModule "project/ProjectManager"
-	PanelManager = brackets.getModule "view/PanelManager"
+	WorkspaceManager = brackets.getModule "view/WorkspaceManager"
 
 	ProcessingCodeHints = require "codehints"
 
@@ -21,7 +21,7 @@ define (require, exports, module) ->
 		$ require "text!panel.html"
 			.find ".close"
 			.on "click", ->
-				panel.close()
+				panel.hide()
 			.end()
 
 	securePath = (path) ->
@@ -109,7 +109,7 @@ define (require, exports, module) ->
 	menu.addMenuItem "#{extension_id}-run", null
 	menu.addMenuItem "#{extension_id}-stop", null
 
-	panel = PanelManager.createBottomPanel "#{extension_id}-panel", createPanel(), 100
+	panel = WorkspaceManager.createBottomPanel "#{extension_id}-panel", createPanel(), 100
 
 	ExtensionUtils.loadStyleSheet module, "panel.css"
 

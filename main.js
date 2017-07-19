@@ -1,6 +1,6 @@
 (function() {
   define(function(require, exports, module) {
-    var CodeHintManager, CommandManager, Commands, DocumentManager, ExtensionUtils, LanguageManager, Menus, NodeDomain, PanelManager, PreferencesManager, ProcessingCodeHints, ProjectManager, codehints, createPanel, domain, extension_id, extension_path, menu, newSketchHandler, panel, preferences, runSketchHandler, secureOutput, securePath, stopSketchHandler;
+    var CodeHintManager, CommandManager, Commands, DocumentManager, ExtensionUtils, LanguageManager, Menus, NodeDomain, PreferencesManager, ProcessingCodeHints, ProjectManager, WorkspaceManager, codehints, createPanel, domain, extension_id, extension_path, menu, newSketchHandler, panel, preferences, runSketchHandler, secureOutput, securePath, stopSketchHandler;
     ExtensionUtils = brackets.getModule("utils/ExtensionUtils");
     LanguageManager = brackets.getModule("language/LanguageManager");
     PreferencesManager = brackets.getModule("preferences/PreferencesManager");
@@ -11,13 +11,13 @@
     Commands = brackets.getModule("command/Commands");
     Menus = brackets.getModule("command/Menus");
     ProjectManager = brackets.getModule("project/ProjectManager");
-    PanelManager = brackets.getModule("view/PanelManager");
+    WorkspaceManager = brackets.getModule("view/WorkspaceManager");
     ProcessingCodeHints = require("codehints");
     extension_id = "processing_lang";
     extension_path = ExtensionUtils.getModulePath(module);
     createPanel = function() {
       return $(require("text!panel.html")).find(".close").on("click", function() {
-        return panel.close();
+        return panel.hide();
       }).end();
     };
     securePath = function(path) {
@@ -84,7 +84,7 @@
     menu.addMenuDivider();
     menu.addMenuItem("" + extension_id + "-run", null);
     menu.addMenuItem("" + extension_id + "-stop", null);
-    panel = PanelManager.createBottomPanel("" + extension_id + "-panel", createPanel(), 100);
+    panel = WorkspaceManager.createBottomPanel("" + extension_id + "-panel", createPanel(), 100);
     return ExtensionUtils.loadStyleSheet(module, "panel.css");
   });
 
