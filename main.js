@@ -1,12 +1,13 @@
 (function() {
   define(function(require, exports, module) {
-    var CodeHintManager, CommandManager, Commands, DocumentManager, ExtensionUtils, LanguageManager, Menus, NodeDomain, PreferencesManager, ProcessingCodeHints, ProjectManager, WorkspaceManager, codehints, createPanel, domain, extension_id, extension_path, menu, newSketchHandler, panel, preferences, runSketchHandler, secureOutput, securePath, stopSketchHandler;
+    var CodeHintManager, CommandManager, Commands, DocumentManager, EditorManager, ExtensionUtils, LanguageManager, Menus, NodeDomain, PreferencesManager, ProcessingCodeHints, ProjectManager, WorkspaceManager, codehints, createPanel, domain, extension_id, extension_path, menu, newSketchHandler, panel, preferences, runSketchHandler, secureOutput, securePath, stopSketchHandler;
     ExtensionUtils = brackets.getModule("utils/ExtensionUtils");
     LanguageManager = brackets.getModule("language/LanguageManager");
     PreferencesManager = brackets.getModule("preferences/PreferencesManager");
     NodeDomain = brackets.getModule("utils/NodeDomain");
     CodeHintManager = brackets.getModule("editor/CodeHintManager");
     DocumentManager = brackets.getModule("document/DocumentManager");
+    EditorManager = brackets.getModule("editor/EditorManager");
     CommandManager = brackets.getModule("command/CommandManager");
     Commands = brackets.getModule("command/Commands");
     Menus = brackets.getModule("command/Menus");
@@ -43,7 +44,21 @@
       }).then(function(entry) {
         return DocumentManager.getDocumentForPath(entry.fullPath);
       }).done(function(document) {
-        return document.setText(require("text!template.pde"));
+        var template;
+        document.setText(require("text!template.pde"));
+        template = JSON.parse(require("text!template.json"));
+        switch (typeof template) {
+          case "number":
+            return EditorManager.getCurrentFullEditor().setCursorPos(template.line, template.ch);
+          case "object":
+            return EditorManager.getCurrentFullEditor().setSelection({
+              line: template.line,
+              ch: template.ch[0]
+            }, {
+              line: template.line,
+              ch: template.ch[1]
+            });
+        }
       });
     };
     runSketchHandler = function() {

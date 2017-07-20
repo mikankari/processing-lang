@@ -1,320 +1,3863 @@
 {
-	"functions": [
-		"HALF_PI",
-		"PI",
-		"QUARTER_PI",
-		"TAU",
-		"TWO_PI",
-		"abs()",
-		"acos()",
-		"alpha()",
-		"ambient()",
-		"ambientLight()",
-		"append()",
-		"applyMatrix()",
-		"arc()",
-		"arrayCopy()",
-		"asin()",
-		"atan()",
-		"atan2()",
-		"background()",
-		"beginCamera()",
-		"beginContour()",
-		"beginRaw()",
-		"beginRecord()",
-		"beginShape()",
-		"bezier()",
-		"bezierDetail()",
-		"bezierPoint()",
-		"bezierTangent()",
-		"bezierVertex()",
-		"binary()",
-		"blend()",
-		"blendMode()",
-		"blue()",
-		"boolean()",
-		"box()",
-		"brightness()",
-		"byte()",
-		"camera()",
-		"ceil()",
-		"char()",
-		"clear()",
-		"clip()",
-		"color()",
-		"colorMode()",
-		"concat()",
-		"constrain()",
-		"copy()",
-		"cos()",
-		"createFont()",
-		"createGraphics()",
-		"createImage()",
-		"createInput()",
-		"createOutput()",
-		"createReader()",
-		"createShape()",
-		"createWriter()",
-		"cursor()",
-		"curve()",
-		"curveDetail()",
-		"curvePoint()",
-		"curveTangent()",
-		"curveTightness()",
-		"curveVertex()",
-		"day()",
-		"degrees()",
-		"delay()",
-		"directionalLight()",
-		"displayDensity()",
-		"dist()",
-		"ellipse()",
-		"ellipseMode()",
-		"emissive()",
-		"endCamera()",
-		"endContour()",
-		"endRaw()",
-		"endRecord()",
-		"endShape()",
-		"exit()",
-		"exp()",
-		"expand()",
-		"fill()",
-		"filter()",
-		"float()",
-		"floor()",
-		"focused",
-		"frameCount",
-		"frameRate",
-		"frameRate()",
-		"frustum()",
-		"fullScreen()",
-		"get()",
-		"green()",
-		"height",
-		"hex()",
-		"hour()",
-		"hue()",
-		"image()",
-		"imageMode()",
-		"int()",
-		"join()",
-		"key",
-		"keyCode",
-		"keyPressed",
-		"launch()",
-		"lerp()",
-		"lerpColor()",
-		"lightFalloff()",
-		"lightSpecular()",
-		"lights()",
-		"line()",
-		"loadBytes()",
-		"loadFont()",
-		"loadImage()",
-		"loadJSONArray()",
-		"loadJSONObject()",
-		"loadPixels()",
-		"loadShader()",
-		"loadShape()",
-		"loadStrings()",
-		"loadTable()",
-		"loadXML()",
-		"log()",
-		"loop()",
-		"mag()",
-		"map()",
-		"match()",
-		"matchAll()",
-		"max()",
-		"millis()",
-		"min()",
-		"minute()",
-		"modelX()",
-		"modelY()",
-		"modelZ()",
-		"month()",
-		"mouseButton",
-		"mousePressed",
-		"mouseX",
-		"mouseY",
-		"nf()",
-		"nfc()",
-		"nfp()",
-		"nfs()",
-		"noClip()",
-		"noCursor()",
-		"noFill()",
-		"noLights()",
-		"noLoop()",
-		"noSmooth()",
-		"noStroke()",
-		"noTint()",
-		"noise()",
-		"noiseDetail()",
-		"noiseSeed()",
-		"norm()",
-		"normal()",
-		"ortho()",
-		"parseJSONArray()",
-		"parseJSONObject()",
-		"parseXML()",
-		"perspective()",
-		"pixelDensity()",
-		"pixelHeight",
-		"pixelWidth",
-		"pixels[]",
-		"pmouseX",
-		"pmouseY",
-		"point()",
-		"pointLight()",
-		"popMatrix()",
-		"popStyle()",
-		"pow()",
-		"print()",
-		"printArray()",
-		"printCamera()",
-		"printMatrix()",
-		"printProjection()",
-		"println()",
-		"pushMatrix()",
-		"pushStyle()",
-		"quad()",
-		"quadraticVertex()",
-		"radians()",
-		"random()",
-		"randomGaussian()",
-		"randomSeed()",
-		"rect()",
-		"rectMode()",
-		"red()",
-		"redraw()",
-		"requestImage()",
-		"resetMatrix()",
-		"resetShader()",
-		"reverse()",
-		"rotate()",
-		"rotateX()",
-		"rotateY()",
-		"rotateZ()",
-		"round()",
-		"saturation()",
-		"save()",
-		"saveBytes()",
-		"saveFrame()",
-		"saveJSONArray()",
-		"saveJSONObject()",
-		"saveStream()",
-		"saveStrings()",
-		"saveTable()",
-		"saveXML()",
-		"scale()",
-		"screenX()",
-		"screenY()",
-		"screenZ()",
-		"second()",
-		"selectFolder()",
-		"selectInput()",
-		"selectOutput()",
-		"set()",
-		"settings()",
-		"shader()",
-		"shape()",
-		"shapeMode()",
-		"shearX()",
-		"shearY()",
-		"shininess()",
-		"shorten()",
-		"sin()",
-		"size()",
-		"smooth()",
-		"sort()",
-		"specular()",
-		"sphere()",
-		"sphereDetail()",
-		"splice()",
-		"split()",
-		"splitTokens()",
-		"spotLight()",
-		"sq()",
-		"sqrt()",
-		"str()",
-		"stroke()",
-		"strokeCap()",
-		"strokeJoin()",
-		"strokeWeight()",
-		"subset()",
-		"tan()",
-		"text()",
-		"textAlign()",
-		"textAscent()",
-		"textDescent()",
-		"textFont()",
-		"textLeading()",
-		"textMode()",
-		"textSize()",
-		"textWidth()",
-		"texture()",
-		"textureMode()",
-		"textureWrap()",
-		"thread()",
-		"tint()",
-		"translate()",
-		"triangle()",
-		"trim()",
-		"unbinary()",
-		"unhex()",
-		"updatePixels()",
-		"vertex()",
-		"width",
-		"year()"
-	],
-	"events": [
-		"draw(){\n\tbackground(255);\n\t\n}\n\n",
-		"keyPressed(){\n\t\n}\n\n",
-		"keyReleased(){\n\t\n}\n\n",
-		"keyTyped(){\n\t\n}\n\n",
-		"mouseClicked(){\n\t\n}\n\n",
-		"mouseDragged(){\n\t\n}\n\n",
-		"mouseMoved(){\n\t\n}\n\n",
-		"mousePressed(){\n\t\n}\n\n",
-		"mouseReleased(){\n\t\n}\n\n",
-		"mouseWheel(){\n\t\n}\n\n",
-		"setup(){\n\tsetup(300, 300);\n\t\n}\n\n"
-	],
-	"types": [
-		"boolean ",
-		"BufferedReader ",
-		"byte ",
-		"char ",
-		"color ",
-		"double ",
-		"float ",
-		"int ",
-		"long ",
-		"Array ",
-		"ArrayList ",
-		"FloatDict ",
-		"FloatList ",
-		"HashMap ",
-		"IntDict ",
-		"IntList ",
-		"JSONArray ",
-		"JSONObject ",
-		"Object ",
-		"PFont ",
-		"PGraphics ",
-		"PImage ",
-		"PrintWriter ",
-		"PShader ",
-		"PShape ",
-		"PVector ",
-		"String ",
-		"StringDict ",
-		"StringList ",
-		"Table ",
-		"TableRow ",
-		"void ",
-		"XML "
-	]
+	"boolean": {
+		"type": "type"
+	},
+	"BufferedReader": {
+		"type": "type"
+	},
+	"byte": {
+		"type": "type"
+	},
+	"char": {
+		"type": "type"
+	},
+	"color": {
+		"type": "type"
+	},
+	"double": {
+		"type": "type"
+	},
+	"float": {
+		"type": "type"
+	},
+	"int": {
+		"type": "type"
+	},
+	"long": {
+		"type": "type"
+	},
+	"ArrayList": {
+		"type": "type"
+	},
+	"FloatDict": {
+		"type": "type"
+	},
+	"FloatList": {
+		"type": "type"
+	},
+	"HashMap": {
+		"type": "type"
+	},
+	"IntDict": {
+		"type": "type"
+	},
+	"IntList": {
+		"type": "type"
+	},
+	"JSONArray": {
+		"type": "type"
+	},
+	"JSONObject": {
+		"type": "type"
+	},
+	"PFont": {
+		"type": "type"
+	},
+	"PGraphics": {
+		"type": "type"
+	},
+	"PImage": {
+		"type": "type"
+	},
+	"PrintWriter": {
+		"type": "type"
+	},
+	"PShader": {
+		"type": "type"
+	},
+	"PShape": {
+		"type": "type"
+	},
+	"PVector": {
+		"type": "type"
+	},
+	"String": {
+		"type": "type"
+	},
+	"StringDict": {
+		"type": "type"
+	},
+	"StringList": {
+		"type": "type"
+	},
+	"Table": {
+		"type": "type"
+	},
+	"void": {
+		"type": "type"
+	},
+	"XML": {
+		"type": "type"
+	},
+	"abs()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	"acos()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	"ADD": {
+		"type": "constant"
+	},
+	".add()": {
+		"type": "function",
+		"param": [
+			true,
+			false
+		]
+	},
+	".addAll()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	".addChild()": {
+		"type": "function",
+		"param": [
+			true,
+			false
+		]
+	},
+	".addColumn()": {
+		"type": "function",
+		"param": [
+			true,
+			false
+		]
+	},
+	".addRow()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	".addRows()": {
+		"type": "function",
+		"param": [
+			true,
+			false
+		]
+	},
+	"alpha()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	"ALT": {
+		"type": "constant"
+	},
+	"ambient()": {
+		"type": "function",
+		"param": [
+			true,
+			false
+		]
+	},
+	"ambientLight()": {
+		"type": "function",
+		"param": [
+			true,
+			false
+		]
+	},
+	".angleBetween()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	"append()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	"applyMatrix()": {
+		"type": "function",
+		"param": [
+			true,
+			false
+		]
+	},
+	"arc()": {
+		"type": "function",
+		"param": [
+			true,
+			false
+		]
+	},
+	".array()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	"arrayCopy()": {
+		"type": "function",
+		"param": [
+			true,
+			false
+		]
+	},
+	"asin()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	"atan()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	"atan2()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	"background()": {
+		"type": "function",
+		"param": [
+			true,
+			false
+		]
+	},
+	"BASELINE": {
+		"type": "constant"
+	},
+	"beginCamera()": {
+		"type": "function",
+		"param": [
+			false,
+			false
+		]
+	},
+	"beginContour()": {
+		"type": "function",
+		"param": [
+			false,
+			false
+		]
+	},
+	".beginContour()": {
+		"type": "function",
+		"param": [
+			false,
+			false
+		]
+	},
+	".beginDraw()": {
+		"type": "function",
+		"param": [
+			false,
+			false
+		]
+	},
+	"beginRaw()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	"beginRecord()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	"beginShape()": {
+		"type": "function",
+		"param": [
+			true,
+			false
+		]
+	},
+	".beginShape()": {
+		"type": "function",
+		"param": [
+			true,
+			false
+		]
+	},
+	"bezier()": {
+		"type": "function",
+		"param": [
+			true,
+			false
+		]
+	},
+	"bezierDetail()": {
+		"type": "function",
+		"param": [
+			true,
+			false
+		]
+	},
+	"bezierPoint()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	"bezierTangent()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	"bezierVertex()": {
+		"type": "function",
+		"param": [
+			true,
+			false
+		]
+	},
+	"binary()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	"BLEND": {
+		"type": "constant"
+	},
+	"blend()": {
+		"type": "function",
+		"param": [
+			true,
+			false
+		]
+	},
+	".blend()": {
+		"type": "function",
+		"param": [
+			true,
+			false
+		]
+	},
+	"blendMode()": {
+		"type": "function",
+		"param": [
+			true,
+			false
+		]
+	},
+	"blue()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	"BLUR": {
+		"type": "constant"
+	},
+	"boolean()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	"BOTTOM": {
+		"type": "constant"
+	},
+	"box()": {
+		"type": "function",
+		"param": [
+			true,
+			false
+		]
+	},
+	"brightness()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	"BURN": {
+		"type": "constant"
+	},
+	"byte()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	"camera()": {
+		"type": "function",
+		"param": [
+			true,
+			false
+		]
+	},
+	"ceil()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	"CENTER": {
+		"type": "constant"
+	},
+	"char()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	".charAt()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	".checkColumnIndex()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	"clear()": {
+		"type": "function",
+		"param": [
+			false,
+			false
+		]
+	},
+	".clear()": {
+		"type": "function",
+		"param": [
+			false,
+			false
+		]
+	},
+	".clearRows()": {
+		"type": "function",
+		"param": [
+			false,
+			false
+		]
+	},
+	"clip()": {
+		"type": "function",
+		"param": [
+			true,
+			false
+		]
+	},
+	".clone()": {
+		"type": "function",
+		"param": [
+			false,
+			true
+		]
+	},
+	".close()": {
+		"type": "function",
+		"param": [
+			false,
+			false
+		]
+	},
+	"CODED": {
+		"type": "constant"
+	},
+	".codePointAt()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	".codePointBefore()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	".codePointCount()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	"color()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	"colorMode()": {
+		"type": "function",
+		"param": [
+			true,
+			false
+		]
+	},
+	".compareTo()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	".compareToIgnoreCase()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	"concat()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	"constrain()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	".contains()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	".containsKey()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	".containsValue()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	".contentEquals()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	"CONTROL": {
+		"type": "constant"
+	},
+	"copy()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	".copy()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	".copyValueOf()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	"CORNER": {
+		"type": "constant"
+	},
+	"CORNERS": {
+		"type": "constant"
+	},
+	"cos()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	"createFont()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	"createGraphics()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	"createImage()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	"createInput()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	"createOutput()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	"createReader()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	"createShape()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	"createWriter()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	".cross()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	"cursor()": {
+		"type": "function",
+		"param": [
+			true,
+			false
+		]
+	},
+	"curve()": {
+		"type": "function",
+		"param": [
+			true,
+			false
+		]
+	},
+	"curveDetail()": {
+		"type": "function",
+		"param": [
+			true,
+			false
+		]
+	},
+	"curvePoint()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	"curveTangent()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	"curveTightness()": {
+		"type": "function",
+		"param": [
+			true,
+			false
+		]
+	},
+	"curveVertex()": {
+		"type": "function",
+		"param": [
+			true,
+			false
+		]
+	},
+	"DARKEST": {
+		"type": "constant"
+	},
+	"day()": {
+		"type": "function",
+		"param": [
+			false,
+			true
+		]
+	},
+	"degrees()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	"delay()": {
+		"type": "function",
+		"param": [
+			true,
+			false
+		]
+	},
+	"DIFFERENCE": {
+		"type": "constant"
+	},
+	"DILATE": {
+		"type": "constant"
+	},
+	"directionalLight()": {
+		"type": "function",
+		"param": [
+			true,
+			false
+		]
+	},
+	".disableStyle()": {
+		"type": "function",
+		"param": [
+			false,
+			false
+		]
+	},
+	"displayDensity()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	"dist()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	".dist()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	".div()": {
+		"type": "function",
+		"param": [
+			true,
+			false
+		]
+	},
+	"DODGE": {
+		"type": "constant"
+	},
+	".dot()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	"DOWN": {
+		"type": "constant"
+	},
+	"ellipse()": {
+		"type": "function",
+		"param": [
+			true,
+			false
+		]
+	},
+	"ellipseMode()": {
+		"type": "function",
+		"param": [
+			true,
+			false
+		]
+	},
+	"emissive()": {
+		"type": "function",
+		"param": [
+			true,
+			false
+		]
+	},
+	".enableStyle()": {
+		"type": "function",
+		"param": [
+			false,
+			false
+		]
+	},
+	"endCamera()": {
+		"type": "function",
+		"param": [
+			false,
+			false
+		]
+	},
+	"endContour()": {
+		"type": "function",
+		"param": [
+			false,
+			false
+		]
+	},
+	".endContour()": {
+		"type": "function",
+		"param": [
+			false,
+			false
+		]
+	},
+	".endDraw()": {
+		"type": "function",
+		"param": [
+			false,
+			false
+		]
+	},
+	"endRaw()": {
+		"type": "function",
+		"param": [
+			false,
+			false
+		]
+	},
+	"endRecord()": {
+		"type": "function",
+		"param": [
+			false,
+			false
+		]
+	},
+	"endShape()": {
+		"type": "function",
+		"param": [
+			true,
+			false
+		]
+	},
+	".endShape()": {
+		"type": "function",
+		"param": [
+			true,
+			false
+		]
+	},
+	".endsWith()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	".entrySet()": {
+		"type": "function",
+		"param": [
+			false,
+			true
+		]
+	},
+	".ensureCapacity()": {
+		"type": "function",
+		"param": [
+			true,
+			false
+		]
+	},
+	".equals()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	".equalsIgnoreCase()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	"ERODE": {
+		"type": "constant"
+	},
+	"EXCLUSION": {
+		"type": "constant"
+	},
+	"exit()": {
+		"type": "function",
+		"param": [
+			false,
+			false
+		]
+	},
+	"exp()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	"expand()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	"false": {
+		"type": "constant"
+	},
+	"fill()": {
+		"type": "function",
+		"param": [
+			true,
+			false
+		]
+	},
+	"filter()": {
+		"type": "function",
+		"param": [
+			true,
+			false
+		]
+	},
+	".filter()": {
+		"type": "function",
+		"param": [
+			true,
+			false
+		]
+	},
+	".findRow()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	".findRowIndex()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	".findRowIndices()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	".findRowIterator()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	".findRows()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	"float()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	"floor()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	".flush()": {
+		"type": "function",
+		"param": [
+			false,
+			false
+		]
+	},
+	"focused": {
+		"type": "constant"
+	},
+	".format()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	"frameCount": {
+		"type": "constant"
+	},
+	"frameRate": {
+		"type": "constant"
+	},
+	"frameRate()": {
+		"type": "function",
+		"param": [
+			true,
+			false
+		]
+	},
+	".fromAngle()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	"frustum()": {
+		"type": "function",
+		"param": [
+			true,
+			false
+		]
+	},
+	"fullScreen()": {
+		"type": "function",
+		"param": [
+			true,
+			false
+		]
+	},
+	"FX2D": {
+		"type": "constant"
+	},
+	"get()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	".get()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	".getAttributeCount()": {
+		"type": "function",
+		"param": [
+			false,
+			true
+		]
+	},
+	".getBoolean()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	".getBytes()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	".getChars()": {
+		"type": "function",
+		"param": [
+			true,
+			false
+		]
+	},
+	".getChild()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	".getChildCount()": {
+		"type": "function",
+		"param": [
+			false,
+			true
+		]
+	},
+	".getChildren()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	".getColumnCount()": {
+		"type": "function",
+		"param": [
+			false,
+			true
+		]
+	},
+	".getColumnIndex()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	".getColumnTitle()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	".getColumnTitles()": {
+		"type": "function",
+		"param": [
+			false,
+			true
+		]
+	},
+	".getColumnType()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	".getColumnTypes()": {
+		"type": "function",
+		"param": [
+			false,
+			true
+		]
+	},
+	".getContent()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	".getDouble()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	".getDoubleColumn()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	".getDoubleRow()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	".getFloat()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	".getFloatColumn()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	".getFloatContent()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	".getFloatDict()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	".getFloatList()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	".getFloatRow()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	".getInt()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	".getIntArray()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	".getIntColumn()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	".getIntContent()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	".getIntDict()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	".getIntList()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	".getIntRow()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	".getJSONArray()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	".getJSONObject()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	".getLong()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	".getLongColumn()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	".getLongRow()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	".getName()": {
+		"type": "function",
+		"param": [
+			false,
+			true
+		]
+	},
+	".getOrder()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	".getParent()": {
+		"type": "function",
+		"param": [
+			false,
+			true
+		]
+	},
+	".getRow()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	".getRowCount()": {
+		"type": "function",
+		"param": [
+			false,
+			true
+		]
+	},
+	".getRowMap()": {
+		"type": "function",
+		"param": [
+			false,
+			true
+		]
+	},
+	".getString()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	".getStringArray()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	".getStringColumn()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	".getStringDict()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	".getStringList()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	".getStringRow()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	".getTally()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	".getUnique()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	".getVertex()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	".getVertexCount()": {
+		"type": "function",
+		"param": [
+			false,
+			true
+		]
+	},
+	"GRAY": {
+		"type": "constant"
+	},
+	"green()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	"HALF_PI": {
+		"type": "constant"
+	},
+	".hasAttribute()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	".hashCode()": {
+		"type": "function",
+		"param": [
+			false,
+			true
+		]
+	},
+	".hasChildren()": {
+		"type": "function",
+		"param": [
+			false,
+			true
+		]
+	},
+	".hasColumnTitles()": {
+		"type": "function",
+		"param": [
+			false,
+			true
+		]
+	},
+	".hasKey()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	".hasValue()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	"HARD_LIGHT": {
+		"type": "constant"
+	},
+	".heading()": {
+		"type": "function",
+		"param": [
+			false,
+			true
+		]
+	},
+	"height": {
+		"type": "constant"
+	},
+	".height": {
+		"type": "constant"
+	},
+	"hex()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	"hour()": {
+		"type": "function",
+		"param": [
+			false,
+			true
+		]
+	},
+	"HSB": {
+		"type": "constant"
+	},
+	"hue()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	"IMAGE": {
+		"type": "constant"
+	},
+	"image()": {
+		"type": "function",
+		"param": [
+			true,
+			false
+		]
+	},
+	"imageMode()": {
+		"type": "function",
+		"param": [
+			true,
+			false
+		]
+	},
+	".increment()": {
+		"type": "function",
+		"param": [
+			true,
+			false
+		]
+	},
+	".indexOf()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	".insertColumn()": {
+		"type": "function",
+		"param": [
+			true,
+			false
+		]
+	},
+	".insertRow()": {
+		"type": "function",
+		"param": [
+			true,
+			false
+		]
+	},
+	"int()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	".intern()": {
+		"type": "function",
+		"param": [
+			false,
+			true
+		]
+	},
+	"INVERT": {
+		"type": "constant"
+	},
+	".isEmpty()": {
+		"type": "function",
+		"param": [
+			false,
+			true
+		]
+	},
+	".isNull()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	".isVisible()": {
+		"type": "function",
+		"param": [
+			false,
+			true
+		]
+	},
+	"JAVA2D": {
+		"type": "constant"
+	},
+	"join()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	"key": {
+		"type": "constant"
+	},
+	".keyArray()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	"keyCode": {
+		"type": "constant"
+	},
+	"keyPressed": {
+		"type": "constant"
+	},
+	".keySet()": {
+		"type": "function",
+		"param": [
+			false,
+			true
+		]
+	},
+	".lastIndexOf()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	".lastRowIndex()": {
+		"type": "function",
+		"param": [
+			false,
+			true
+		]
+	},
+	"launch()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	"LEFT": {
+		"type": "constant"
+	},
+	".length()": {
+		"type": "function",
+		"param": [
+			false,
+			true
+		]
+	},
+	"lerp()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	".lerp()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	"lerpColor()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	"LIGHTEST": {
+		"type": "constant"
+	},
+	"lightFalloff()": {
+		"type": "function",
+		"param": [
+			true,
+			false
+		]
+	},
+	"lights()": {
+		"type": "function",
+		"param": [
+			false,
+			false
+		]
+	},
+	"lightSpecular()": {
+		"type": "function",
+		"param": [
+			true,
+			false
+		]
+	},
+	".limit()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	"line()": {
+		"type": "function",
+		"param": [
+			true,
+			false
+		]
+	},
+	".list()": {
+		"type": "function",
+		"param": [
+			false,
+			true
+		]
+	},
+	".listAttributes()": {
+		"type": "function",
+		"param": [
+			false,
+			true
+		]
+	},
+	".listChildren()": {
+		"type": "function",
+		"param": [
+			false,
+			true
+		]
+	},
+	"loadBytes()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	"loadFont()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	"loadImage()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	"loadJSONArray()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	"loadJSONObject()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	"loadPixels()": {
+		"type": "function",
+		"param": [
+			false,
+			false
+		]
+	},
+	".loadPixels()": {
+		"type": "function",
+		"param": [
+			false,
+			false
+		]
+	},
+	"loadShader()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	"loadShape()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	"loadStrings()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	"loadTable()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	"loadXML()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	"log()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	"loop()": {
+		"type": "function",
+		"param": [
+			true,
+			false
+		]
+	},
+	".lower()": {
+		"type": "function",
+		"param": [
+			false,
+			false
+		]
+	},
+	"mag()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	".mag()": {
+		"type": "function",
+		"param": [
+			false,
+			true
+		]
+	},
+	".magSq()": {
+		"type": "function",
+		"param": [
+			false,
+			true
+		]
+	},
+	"map()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	".mask()": {
+		"type": "function",
+		"param": [
+			true,
+			false
+		]
+	},
+	"match()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	"matchAll()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	".matches()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	".matchRow()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	".matchRowIndex()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	".matchRowIndeces()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	".matchRowIterator()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	".matchRows()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	"max()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	".max()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	"millis()": {
+		"type": "function",
+		"param": [
+			false,
+			true
+		]
+	},
+	"min()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	".min()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	"minute()": {
+		"type": "function",
+		"param": [
+			false,
+			true
+		]
+	},
+	"MODEL": {
+		"type": "constant"
+	},
+	"modelX()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	"modelY()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	"modelZ()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	"month()": {
+		"type": "function",
+		"param": [
+			false,
+			true
+		]
+	},
+	"mouseButton": {
+		"type": "constant"
+	},
+	"mousePressed": {
+		"type": "constant"
+	},
+	"mouseX": {
+		"type": "constant"
+	},
+	"mouseY": {
+		"type": "constant"
+	},
+	".mult()": {
+		"type": "function",
+		"param": [
+			true,
+			false
+		]
+	},
+	"MULTIPLY": {
+		"type": "constant"
+	},
+	"new ArrayList()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	"new FloatDict()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	"new FloatList()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	"new HashMap()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	"new IntDict()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	"new IntList()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	"new JSONArray()": {
+		"type": "function",
+		"param": [
+			false,
+			true
+		]
+	},
+	"new JSONObject()": {
+		"type": "function",
+		"param": [
+			false,
+			true
+		]
+	},
+	"new PGraphics()": {
+		"type": "function",
+		"param": [
+			false,
+			true
+		]
+	},
+	"new PImage()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	"new PShader()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	"new PShape()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	"new PVector()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	"new String()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	"new StringDict()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	"new StringList()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	"new Table()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	"new XML()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	"nf()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	"nfc()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	"nfp()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	"nfs()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	"noClip()": {
+		"type": "function",
+		"param": [
+			false,
+			false
+		]
+	},
+	"noCursor()": {
+		"type": "function",
+		"param": [
+			false,
+			false
+		]
+	},
+	"noFill()": {
+		"type": "function",
+		"param": [
+			false,
+			false
+		]
+	},
+	"noise()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	"noiseDetail()": {
+		"type": "function",
+		"param": [
+			true,
+			false
+		]
+	},
+	"noiseSeed()": {
+		"type": "function",
+		"param": [
+			true,
+			false
+		]
+	},
+	"noLights()": {
+		"type": "function",
+		"param": [
+			false,
+			false
+		]
+	},
+	"noLoop()": {
+		"type": "function",
+		"param": [
+			false,
+			false
+		]
+	},
+	"norm()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	"NORMAL": {
+		"type": "constant"
+	},
+	"normal()": {
+		"type": "function",
+		"param": [
+			true,
+			false
+		]
+	},
+	".normalize()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	"noSmooth()": {
+		"type": "function",
+		"param": [
+			false,
+			false
+		]
+	},
+	"noStroke()": {
+		"type": "function",
+		"param": [
+			false,
+			false
+		]
+	},
+	"noTint()": {
+		"type": "function",
+		"param": [
+			false,
+			false
+		]
+	},
+	".offsetByCodePoints()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	"OPAQUE": {
+		"type": "constant"
+	},
+	"ortho()": {
+		"type": "function",
+		"param": [
+			true,
+			false
+		]
+	},
+	"OVERLAY": {
+		"type": "constant"
+	},
+	"P2D": {
+		"type": "constant"
+	},
+	"P3D": {
+		"type": "constant"
+	},
+	".parseInfo()": {
+		"type": "function",
+		"param": [
+			true,
+			false
+		]
+	},
+	"parseJSONArray()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	"parseJSONObject()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	"parseXML()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	"perspective()": {
+		"type": "function",
+		"param": [
+			true,
+			false
+		]
+	},
+	"PI": {
+		"type": "constant"
+	},
+	"pixelDensity()": {
+		"type": "function",
+		"param": [
+			true,
+			false
+		]
+	},
+	"pixelHeight": {
+		"type": "constant"
+	},
+	"pixels[]": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	".pixels[]": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	"pixelWidth": {
+		"type": "constant"
+	},
+	"pmouseX": {
+		"type": "constant"
+	},
+	"pmouseY": {
+		"type": "constant"
+	},
+	"point()": {
+		"type": "function",
+		"param": [
+			true,
+			false
+		]
+	},
+	"pointLight()": {
+		"type": "function",
+		"param": [
+			true,
+			false
+		]
+	},
+	"popMatrix()": {
+		"type": "function",
+		"param": [
+			false,
+			false
+		]
+	},
+	"popStyle()": {
+		"type": "function",
+		"param": [
+			false,
+			false
+		]
+	},
+	"POSTERIZE": {
+		"type": "constant"
+	},
+	"pow()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	"print()": {
+		"type": "function",
+		"param": [
+			true,
+			false
+		]
+	},
+	".print()": {
+		"type": "function",
+		"param": [
+			true,
+			false
+		]
+	},
+	"printArray()": {
+		"type": "function",
+		"param": [
+			true,
+			false
+		]
+	},
+	"printCamera()": {
+		"type": "function",
+		"param": [
+			false,
+			false
+		]
+	},
+	"println()": {
+		"type": "function",
+		"param": [
+			true,
+			false
+		]
+	},
+	".println()": {
+		"type": "function",
+		"param": [
+			true,
+			false
+		]
+	},
+	"printMatrix()": {
+		"type": "function",
+		"param": [
+			false,
+			false
+		]
+	},
+	"printProjection()": {
+		"type": "function",
+		"param": [
+			false,
+			false
+		]
+	},
+	"pushMatrix()": {
+		"type": "function",
+		"param": [
+			false,
+			false
+		]
+	},
+	"pushStyle()": {
+		"type": "function",
+		"param": [
+			false,
+			false
+		]
+	},
+	".put()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	".putAll()": {
+		"type": "function",
+		"param": [
+			true,
+			false
+		]
+	},
+	"quad()": {
+		"type": "function",
+		"param": [
+			true,
+			false
+		]
+	},
+	"quadraticVertex()": {
+		"type": "function",
+		"param": [
+			true,
+			false
+		]
+	},
+	"QUARTER_PI": {
+		"type": "constant"
+	},
+	"radians()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	"RADIUS": {
+		"type": "constant"
+	},
+	"random()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	".random2D()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	".random3D()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	"randomGaussian()": {
+		"type": "function",
+		"param": [
+			false,
+			true
+		]
+	},
+	"randomSeed()": {
+		"type": "function",
+		"param": [
+			true,
+			false
+		]
+	},
+	"rect()": {
+		"type": "function",
+		"param": [
+			true,
+			false
+		]
+	},
+	"rectMode()": {
+		"type": "function",
+		"param": [
+			true,
+			false
+		]
+	},
+	"red()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	"redraw()": {
+		"type": "function",
+		"param": [
+			false,
+			false
+		]
+	},
+	".regionMatches()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	".remove()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	".removeChild()": {
+		"type": "function",
+		"param": [
+			true,
+			false
+		]
+	},
+	".removeColumn()": {
+		"type": "function",
+		"param": [
+			true,
+			false
+		]
+	},
+	".removeRange()": {
+		"type": "function",
+		"param": [
+			true,
+			false
+		]
+	},
+	".removeRow()": {
+		"type": "function",
+		"param": [
+			false,
+			true
+		]
+	},
+	".removeTitleRow()": {
+		"type": "function",
+		"param": [
+			true,
+			false
+		]
+	},
+	".removeTokens()": {
+		"type": "function",
+		"param": [
+			true,
+			false
+		]
+	},
+	"REPLACE": {
+		"type": "constant"
+	},
+	".replace()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	".replaceAll()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	".replaceFirst()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	"requestImage()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	"resetMatrix()": {
+		"type": "function",
+		"param": [
+			false,
+			false
+		]
+	},
+	".resetMatrix()": {
+		"type": "function",
+		"param": [
+			false,
+			false
+		]
+	},
+	"resetShader()": {
+		"type": "function",
+		"param": [
+			true,
+			false
+		]
+	},
+	".resize()": {
+		"type": "function",
+		"param": [
+			true,
+			false
+		]
+	},
+	"reverse()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	".reverse()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	"RGB": {
+		"type": "constant"
+	},
+	"RIGHT": {
+		"type": "constant"
+	},
+	"rotate()": {
+		"type": "function",
+		"param": [
+			true,
+			false
+		]
+	},
+	".rotate()": {
+		"type": "function",
+		"param": [
+			true,
+			false
+		]
+	},
+	"rotateX()": {
+		"type": "function",
+		"param": [
+			true,
+			false
+		]
+	},
+	".rotateX()": {
+		"type": "function",
+		"param": [
+			true,
+			false
+		]
+	},
+	"rotateY()": {
+		"type": "function",
+		"param": [
+			true,
+			false
+		]
+	},
+	".rotateY()": {
+		"type": "function",
+		"param": [
+			true,
+			false
+		]
+	},
+	"rotateZ()": {
+		"type": "function",
+		"param": [
+			true,
+			false
+		]
+	},
+	".rotateZ()": {
+		"type": "function",
+		"param": [
+			true,
+			false
+		]
+	},
+	"round()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	".rows()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	"saturation()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	"save()": {
+		"type": "function",
+		"param": [
+			true,
+			false
+		]
+	},
+	".save()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	"saveBytes()": {
+		"type": "function",
+		"param": [
+			true,
+			false
+		]
+	},
+	"saveFrame()": {
+		"type": "function",
+		"param": [
+			true,
+			false
+		]
+	},
+	"saveJSONArray()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	"saveJSONObject()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	"saveStream()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	"saveStrings()": {
+		"type": "function",
+		"param": [
+			true,
+			false
+		]
+	},
+	"saveTable()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	"saveXML()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	"scale()": {
+		"type": "function",
+		"param": [
+			true,
+			false
+		]
+	},
+	".scale()": {
+		"type": "function",
+		"param": [
+			true,
+			false
+		]
+	},
+	"SCREEN": {
+		"type": "constant"
+	},
+	"screenX()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	"screenY()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	"screenZ()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	"second()": {
+		"type": "function",
+		"param": [
+			false,
+			true
+		]
+	},
+	"selectFolder()": {
+		"type": "function",
+		"param": [
+			true,
+			false
+		]
+	},
+	"selectInput()": {
+		"type": "function",
+		"param": [
+			true,
+			false
+		]
+	},
+	"selectOutput()": {
+		"type": "function",
+		"param": [
+			true,
+			false
+		]
+	},
+	"set()": {
+		"type": "function",
+		"param": [
+			true,
+			false
+		]
+	},
+	".set()": {
+		"type": "function",
+		"param": [
+			true,
+			false
+		]
+	},
+	".setBoolean()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	".setColumnCount()": {
+		"type": "function",
+		"param": [
+			true,
+			false
+		]
+	},
+	".setColumnTitle()": {
+		"type": "function",
+		"param": [
+			true,
+			false
+		]
+	},
+	".setColumnTitles()": {
+		"type": "function",
+		"param": [
+			true,
+			false
+		]
+	},
+	".setColumnType()": {
+		"type": "function",
+		"param": [
+			true,
+			false
+		]
+	},
+	".setColumnTypes()": {
+		"type": "function",
+		"param": [
+			true,
+			false
+		]
+	},
+	".setContent()": {
+		"type": "function",
+		"param": [
+			true,
+			false
+		]
+	},
+	".setDouble()": {
+		"type": "function",
+		"param": [
+			true,
+			false
+		]
+	},
+	".setFill()": {
+		"type": "function",
+		"param": [
+			true,
+			false
+		]
+	},
+	".setFloat()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	".setInt()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	".setJSONArray()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	".setJSONObject()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	".setLong()": {
+		"type": "function",
+		"param": [
+			true,
+			false
+		]
+	},
+	".setName()": {
+		"type": "function",
+		"param": [
+			true,
+			false
+		]
+	},
+	".setMag()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	".setMissingDouble()": {
+		"type": "function",
+		"param": [
+			true,
+			false
+		]
+	},
+	".setMissingFloat()": {
+		"type": "function",
+		"param": [
+			true,
+			false
+		]
+	},
+	".setMissingInt()": {
+		"type": "function",
+		"param": [
+			true,
+			false
+		]
+	},
+	".setMissingLong()": {
+		"type": "function",
+		"param": [
+			true,
+			false
+		]
+	},
+	".setMissingString()": {
+		"type": "function",
+		"param": [
+			true,
+			false
+		]
+	},
+	".setRow()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	".setRowCount()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	".setString()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	".setStroke()": {
+		"type": "function",
+		"param": [
+			true,
+			false
+		]
+	},
+	".setTableType()": {
+		"type": "function",
+		"param": [
+			true,
+			false
+		]
+	},
+	".setVertex()": {
+		"type": "function",
+		"param": [
+			true,
+			false
+		]
+	},
+	".setVisible()": {
+		"type": "function",
+		"param": [
+			true,
+			false
+		]
+	},
+	"settings()": {
+		"type": "function",
+		"param": [
+			false,
+			false
+		]
+	},
+	"shader()": {
+		"type": "function",
+		"param": [
+			true,
+			false
+		]
+	},
+	"SHAPE": {
+		"type": "constant"
+	},
+	"shape()": {
+		"type": "function",
+		"param": [
+			true,
+			false
+		]
+	},
+	"shapeMode()": {
+		"type": "function",
+		"param": [
+			true,
+			false
+		]
+	},
+	"shearX()": {
+		"type": "function",
+		"param": [
+			true,
+			false
+		]
+	},
+	"shearY()": {
+		"type": "function",
+		"param": [
+			true,
+			false
+		]
+	},
+	"SHIFT": {
+		"type": "constant"
+	},
+	"shininess()": {
+		"type": "function",
+		"param": [
+			true,
+			false
+		]
+	},
+	"shorten()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	".shuffle()": {
+		"type": "function",
+		"param": [
+			true,
+			false
+		]
+	},
+	"sin()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	"size()": {
+		"type": "function",
+		"param": [
+			true,
+			false
+		]
+	},
+	".size()": {
+		"type": "function",
+		"param": [
+			true,
+			false
+		]
+	},
+	"smooth()": {
+		"type": "function",
+		"param": [
+			true,
+			false
+		]
+	},
+	"SOFT_LIGHT": {
+		"type": "constant"
+	},
+	"sort()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	".sort()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	".sortKeys()": {
+		"type": "function",
+		"param": [
+			false,
+			false
+		]
+	},
+	".sortKeysReverse()": {
+		"type": "function",
+		"param": [
+			false,
+			false
+		]
+	},
+	".sortReverse()": {
+		"type": "function",
+		"param": [
+			false,
+			false
+		]
+	},
+	".sortValues()": {
+		"type": "function",
+		"param": [
+			true,
+			false
+		]
+	},
+	".sortValuesReverse()": {
+		"type": "function",
+		"param": [
+			true,
+			false
+		]
+	},
+	"specular()": {
+		"type": "function",
+		"param": [
+			true,
+			false
+		]
+	},
+	"sphere()": {
+		"type": "function",
+		"param": [
+			true,
+			false
+		]
+	},
+	"sphereDetail()": {
+		"type": "function",
+		"param": [
+			true,
+			false
+		]
+	},
+	"splice()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	"split()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	".split()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	"splitTokens()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	"spotLight()": {
+		"type": "function",
+		"param": [
+			true,
+			false
+		]
+	},
+	"sq()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	"sqrt()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	".startsWith()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	"str()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	"stroke()": {
+		"type": "function",
+		"param": [
+			true,
+			false
+		]
+	},
+	"strokeCap()": {
+		"type": "function",
+		"param": [
+			true,
+			false
+		]
+	},
+	"strokeJoin()": {
+		"type": "function",
+		"param": [
+			true,
+			false
+		]
+	},
+	"strokeWeight()": {
+		"type": "function",
+		"param": [
+			true,
+			false
+		]
+	},
+	".sub()": {
+		"type": "function",
+		"param": [
+			true,
+			false
+		]
+	},
+	".subSequence()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	"subset()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	".substring()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	"SUBTRACT": {
+		"type": "constant"
+	},
+	"Table.CATEGORY": {
+		"type": "constant"
+	},
+	"Table.DOUBLE": {
+		"type": "constant"
+	},
+	"Table.extensionOptions()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	"Table.FLOAT": {
+		"type": "constant"
+	},
+	"Table.INT": {
+		"type": "constant"
+	},
+	"Table.LONG": {
+		"type": "constant"
+	},
+	"Table.STRING": {
+		"type": "constant"
+	},
+	"tan()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	"TAU": {
+		"type": "constant"
+	},
+	"text()": {
+		"type": "function",
+		"param": [
+			true,
+			false
+		]
+	},
+	"textAlign()": {
+		"type": "function",
+		"param": [
+			true,
+			false
+		]
+	},
+	"textAscent()": {
+		"type": "function",
+		"param": [
+			false,
+			true
+		]
+	},
+	"textDescent()": {
+		"type": "function",
+		"param": [
+			false,
+			true
+		]
+	},
+	"textFont()": {
+		"type": "function",
+		"param": [
+			true,
+			false
+		]
+	},
+	"textLeading()": {
+		"type": "function",
+		"param": [
+			true,
+			false
+		]
+	},
+	"textMode()": {
+		"type": "function",
+		"param": [
+			true,
+			false
+		]
+	},
+	"textSize()": {
+		"type": "function",
+		"param": [
+			true,
+			false
+		]
+	},
+	"texture()": {
+		"type": "function",
+		"param": [
+			true,
+			false
+		]
+	},
+	"textureMode()": {
+		"type": "function",
+		"param": [
+			true,
+			false
+		]
+	},
+	"textureWrap()": {
+		"type": "function",
+		"param": [
+			true,
+			false
+		]
+	},
+	"textWidth()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	"thread()": {
+		"type": "function",
+		"param": [
+			true,
+			false
+		]
+	},
+	"THRESHOLD": {
+		"type": "constant"
+	},
+	"tint()": {
+		"type": "function",
+		"param": [
+			true,
+			false
+		]
+	},
+	".toArray()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	".toCharArray()": {
+		"type": "function",
+		"param": [
+			false,
+			true
+		]
+	},
+	".toLowerCase()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	".toString()": {
+		"type": "function",
+		"param": [
+			false,
+			true
+		]
+	},
+	".toUpperCase()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	"TOP": {
+		"type": "constant"
+	},
+	"translate()": {
+		"type": "function",
+		"param": [
+			true,
+			false
+		]
+	},
+	".translate()": {
+		"type": "function",
+		"param": [
+			true,
+			false
+		]
+	},
+	"triangle()": {
+		"type": "function",
+		"param": [
+			true,
+			false
+		]
+	},
+	"trim()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	".trim()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	".trimToSize()": {
+		"type": "function",
+		"param": [
+			false,
+			false
+		]
+	},
+	"true": {
+		"type": "constant"
+	},
+	"TWO_PI": {
+		"type": "constant"
+	},
+	".typedParse()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	"unbinary()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	"unhex()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	"UP": {
+		"type": "constant"
+	},
+	"updatePixels()": {
+		"type": "function",
+		"param": [
+			false,
+			false
+		]
+	},
+	".updatePixels()": {
+		"type": "function",
+		"param": [
+			false,
+			false
+		]
+	},
+	".upper()": {
+		"type": "function",
+		"param": [
+			false,
+			false
+		]
+	},
+	".valueArray()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	".valueOf()": {
+		"type": "function",
+		"param": [
+			true,
+			true
+		]
+	},
+	".values()": {
+		"type": "function",
+		"param": [
+			false,
+			true
+		]
+	},
+	"vertex()": {
+		"type": "function",
+		"param": [
+			true,
+			false
+		]
+	},
+	"void draw(){\n\tbackground(255);\n\t\n}\n\n": {
+		"type": "event",
+		"line": 1,
+		"ch": [12, 15]
+	},
+	"void keyPressed(){\n\t\n}\n\n": {
+		"type": "event",
+		"line": 1,
+		"ch": 1
+	},
+	"void keyReleased(){\n\t\n}\n\n": {
+		"type": "event",
+		"line": 1,
+		"ch": 1
+	},
+	"void keyTyped(){\n\t\n}\n\n": {
+		"type": "event",
+		"line": 1,
+		"ch": 1
+	},
+	"void mouseClicked(){\n\t\n}\n\n": {
+		"type": "event",
+		"line": 1,
+		"ch": 1
+	},
+	"void mouseDragged(){\n\t\n}\n\n": {
+		"type": "event",
+		"line": 1,
+		"ch": 1
+	},
+	"void mouseMoved(){\n\t\n}\n\n": {
+		"type": "event",
+		"line": 1,
+		"ch": 1
+	},
+	"void mousePressed(){\n\t\n}\n\n": {
+		"type": "event",
+		"line": 1,
+		"ch": 1
+	},
+	"void mouseReleased(){\n\t\n}\n\n": {
+		"type": "event",
+		"line": 1,
+		"ch": 1
+	},
+	"void mouseWheel(){\n\t\n}\n\n": {
+		"type": "event",
+		"line": 1,
+		"ch": 1
+	},
+	"void setup(){\n\tsetup(300, 300);\n\t\n}\n\n": {
+		"type": "event",
+		"line": 1,
+		"ch": [7, 15]
+	},
+	"width": {
+		"type": "constant"
+	},
+	".width": {
+		"type": "constant"
+	},
+	".write()": {
+		"type": "function",
+		"param": [
+			true,
+			false
+		]
+	},
+	"year()": {
+		"type": "function",
+		"param": [
+			false,
+			true
+		]
+	}
 }

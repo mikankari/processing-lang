@@ -8,24 +8,22 @@
         this.insertHint = __bind(this.insertHint, this);
         this.exclusion = null;
         this.wordlist = JSON.parse(require("text!codehints.json"));
-        this.definition = /\w{2,}$/;
+        this.definition = /((void )|(new )|\.)?\w+$/;
       }
 
-      ProcessingCodeHints.prototype.updateExclusion = function() {};
-
       ProcessingCodeHints.prototype.hasHints = function(editor, implicitChar) {
-        var cachedWordlist, cursor, matched, textBeforeCursor, value, _i, _len;
+        var cursor, key, matched, textBeforeCursor, value, _ref;
         this.editor = editor;
         cursor = this.editor.getCursorPos();
         textBeforeCursor = this.editor.document.getRange({
           line: cursor.line,
           ch: 0
         }, cursor);
-        cachedWordlist = this.wordlist.functions.concat(this.wordlist.events, this.wordlist.types);
         if (matched = textBeforeCursor.match(this.definition)) {
-          for (_i = 0, _len = cachedWordlist.length; _i < _len; _i++) {
-            value = cachedWordlist[_i];
-            if ((value.toLowerCase().indexOf(matched[0].toLowerCase())) === 0) {
+          _ref = this.wordlist;
+          for (key in _ref) {
+            value = _ref[key];
+            if ((key.toLowerCase().indexOf(matched[0].toLowerCase())) === 0) {
               return true;
             }
           }
@@ -34,25 +32,24 @@
       };
 
       ProcessingCodeHints.prototype.getHints = function(implicitChar) {
-        var cachedWordlist, cursor, hintlist, matched, textBeforeCursor, value, _i, _len;
+        var cursor, hintlist, key, matched, textBeforeCursor, value, _ref;
         cursor = this.editor.getCursorPos();
         textBeforeCursor = this.editor.document.getRange({
           line: cursor.line,
           ch: 0
         }, cursor);
-        cachedWordlist = this.wordlist.functions.concat(this.wordlist.events, this.wordlist.types);
         hintlist = [];
         if (matched = textBeforeCursor.match(this.definition)) {
-          for (_i = 0, _len = cachedWordlist.length; _i < _len; _i++) {
-            value = cachedWordlist[_i];
-            if ((value.toLowerCase().indexOf(matched[0].toLowerCase())) === 0) {
-              hintlist.push(value);
+          _ref = this.wordlist;
+          for (key in _ref) {
+            value = _ref[key];
+            if ((key.toLowerCase().indexOf(matched[0].toLowerCase())) === 0) {
+              hintlist.push(key);
             }
           }
         } else {
           matched = [""];
         }
-        console.log(hintlist);
         return {
           "hints": hintlist,
           "match": matched[0],
@@ -62,17 +59,42 @@
       };
 
       ProcessingCodeHints.prototype.insertHint = function(completion) {
-        var cursor, indexOfText, textBeforeCursor;
+        var cursor, hint, indexOfParam, indexOfText, textBeforeCursor;
         cursor = this.editor.getCursorPos();
         textBeforeCursor = this.editor.document.getRange({
           line: cursor.line,
           ch: 0
         }, cursor);
         indexOfText = textBeforeCursor.search(this.definition);
+        indexOfParam = indexOfText + completion.length - 1;
+        hint = this.wordlist[completion];
+        if (hint.type === "function" && !hint.param[1]) {
+          completion = "" + completion + ";";
+        }
+        if (hint.type === "type") {
+          completion = "" + completion + " ";
+        }
         this.editor.document.replaceRange(completion, {
           line: cursor.line,
           ch: indexOfText
         }, cursor);
+        if (hint.type === "function" && hint.param[0]) {
+          this.editor.setCursorPos(cursor.line, indexOfParam);
+        } else if (hint.type === "event") {
+          switch (typeof hint.ch) {
+            case "number":
+              this.editor.setCursorPos(cursor.line + hint.line, hint.ch);
+              break;
+            case "object":
+              this.editor.setSelection({
+                "line": cursor.line + hint.line,
+                "ch": hint.ch[0]
+              }, {
+                "line": cursor.line + hint.line,
+                "ch": hint.ch[1]
+              });
+          }
+        }
         return false;
       };
 

@@ -6,6 +6,7 @@ define (require, exports, module) ->
 	NodeDomain = brackets.getModule "utils/NodeDomain"
 	CodeHintManager = brackets.getModule "editor/CodeHintManager"
 	DocumentManager = brackets.getModule "document/DocumentManager"
+	EditorManager = brackets.getModule "editor/EditorManager"
 	CommandManager = brackets.getModule "command/CommandManager"
 	Commands = brackets.getModule "command/Commands"
 	Menus = brackets.getModule "command/Menus"
@@ -57,6 +58,12 @@ define (require, exports, module) ->
 				DocumentManager.getDocumentForPath entry.fullPath
 			.done (document) ->
 				document.setText require "text!template.pde"
+				template = JSON.parse require "text!template.json"
+				switch typeof template
+					when "number"
+						EditorManager.getCurrentFullEditor().setCursorPos template.line, template.ch
+					when "object"
+						EditorManager.getCurrentFullEditor().setSelection {line: template.line, ch: template.ch[0]}, {line: template.line, ch: template.ch[1]}
 
 	runSketchHandler = ->
 		CommandManager.execute Commands.FILE_SAVE_ALL
