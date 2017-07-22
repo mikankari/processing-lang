@@ -83,15 +83,15 @@
         } else if (hint.type === "event") {
           switch (typeof hint.ch) {
             case "number":
-              this.editor.setCursorPos(cursor.line + hint.line, hint.ch);
+              this.editor.setCursorPos(cursor.line + hint.line, indexOfText + hint.ch);
               break;
             case "object":
               this.editor.setSelection({
                 "line": cursor.line + hint.line,
-                "ch": hint.ch[0]
+                "ch": indexOfText + hint.ch[0]
               }, {
                 "line": cursor.line + hint.line,
-                "ch": hint.ch[1]
+                "ch": indexOfText + hint.ch[1]
               });
           }
         }

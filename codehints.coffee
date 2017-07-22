@@ -56,9 +56,9 @@ define (require, exports, module) ->
 			else if hint.type is "event"
 				switch typeof hint.ch
 					when "number"
-						@editor.setCursorPos cursor.line + hint.line, hint.ch
+						@editor.setCursorPos cursor.line + hint.line, indexOfText + hint.ch
 					when "object"
-						@editor.setSelection {"line": cursor.line + hint.line, "ch": hint.ch[0]}, {"line": cursor.line + hint.line, "ch": hint.ch[1]}
+						@editor.setSelection {"line": cursor.line + hint.line, "ch": indexOfText + hint.ch[0]}, {"line": cursor.line + hint.line, "ch": indexOfText + hint.ch[1]}
 
 			false
 

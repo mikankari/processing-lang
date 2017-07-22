@@ -394,6 +394,13 @@
 			false
 		]
 	},
+	"break": {
+		"type": "function",
+		"param": [
+			false,
+			false
+		]
+	},
 	"brightness()": {
 		"type": "function",
 		"param": [
@@ -417,6 +424,16 @@
 			true,
 			false
 		]
+	},
+	"case : ; break;": {
+		"type": "event",
+		"line": 0,
+		"ch": 5
+	},
+	"catch (Exception exception) {}": {
+		"type": "event",
+		"line": 0,
+		"ch": [7, 26]
 	},
 	"ceil()": {
 		"type": "function",
@@ -448,6 +465,11 @@
 			true,
 			true
 		]
+	},
+	"class  {}": {
+		"type": "event",
+		"line": 0,
+		"ch": 6
 	},
 	"clear()": {
 		"type": "function",
@@ -583,6 +605,13 @@
 		"param": [
 			true,
 			true
+		]
+	},
+	"continue": {
+		"type": "function",
+		"param": [
+			false,
+			false
 		]
 	},
 	"CONTROL": {
@@ -744,6 +773,11 @@
 			true
 		]
 	},
+	"default: ; break;": {
+		"type": "event",
+		"line": 0,
+		"ch": 9
+	},
 	"degrees()": {
 		"type": "function",
 		"param": [
@@ -818,6 +852,16 @@
 	},
 	"DOWN": {
 		"type": "constant"
+	},
+	"else {}": {
+		"type": "event",
+		"line": 0,
+		"ch": 6
+	},
+	"else if () {}": {
+		"type": "event",
+		"line": 0,
+		"ch": 9
 	},
 	"ellipse()": {
 		"type": "function",
@@ -965,6 +1009,9 @@
 			true
 		]
 	},
+	"extends": {
+		"type": "type"
+	},
 	"false": {
 		"type": "constant"
 	},
@@ -988,6 +1035,9 @@
 			true,
 			false
 		]
+	},
+	"final": {
+		"type": "type"
 	},
 	".findRow()": {
 		"type": "function",
@@ -1047,6 +1097,11 @@
 	},
 	"focused": {
 		"type": "constant"
+	},
+	"for (int i = 0; ; ) {}": {
+		"type": "event",
+		"line": 0,
+		"ch": [5, 14]
 	},
 	".format()": {
 		"type": "function",
@@ -1558,6 +1613,11 @@
 			true
 		]
 	},
+	"if () {}": {
+		"type": "event",
+		"line": 0,
+		"ch": 4
+	},
 	"IMAGE": {
 		"type": "constant"
 	},
@@ -1574,6 +1634,14 @@
 			true,
 			false
 		]
+	},
+	"implements": {
+		"type": "type"
+	},
+	"import ;": {
+		"type": "event",
+		"line": 0,
+		"ch": 7
 	},
 	".increment()": {
 		"type": "function",
@@ -1696,6 +1764,9 @@
 		]
 	},
 	"LEFT": {
+		"type": "constant"
+	},
+	".length": {
 		"type": "constant"
 	},
 	".length()": {
@@ -2076,6 +2147,9 @@
 	"MULTIPLY": {
 		"type": "constant"
 	},
+	"new": {
+		"type": "type"
+	},
 	"new ArrayList()": {
 		"type": "function",
 		"param": [
@@ -2331,6 +2405,9 @@
 			false
 		]
 	},
+	"null": {
+		"type": "constant"
+	},
 	".offsetByCodePoints()": {
 		"type": "function",
 		"param": [
@@ -2521,6 +2598,12 @@
 			false,
 			false
 		]
+	},
+	"private": {
+		"type": "type"
+	},
+	"public": {
+		"type": "type"
 	},
 	"pushMatrix()": {
 		"type": "function",
@@ -2754,6 +2837,11 @@
 			true,
 			false
 		]
+	},
+	"return ;": {
+		"type": "event",
+		"line": 0,
+		"ch": 7
 	},
 	"reverse()": {
 		"type": "function",
@@ -3424,6 +3512,9 @@
 			true
 		]
 	},
+	"static": {
+		"type": "type"
+	},
 	"str()": {
 		"type": "function",
 		"param": [
@@ -3489,6 +3580,14 @@
 	},
 	"SUBTRACT": {
 		"type": "constant"
+	},
+	"super":{
+		"type": "constant"
+	},
+	"switch () {}": {
+		"type": "event",
+		"line": 0,
+		"ch": 8
 	},
 	"Table.CATEGORY": {
 		"type": "constant"
@@ -3609,6 +3708,9 @@
 			true
 		]
 	},
+	"this": {
+		"type": "constant"
+	},
 	"thread()": {
 		"type": "function",
 		"param": [
@@ -3708,6 +3810,11 @@
 	},
 	"true": {
 		"type": "constant"
+	},
+	"try {}": {
+		"type": "event",
+		"line": 0,
+		"ch": 5
 	},
 	"TWO_PI": {
 		"type": "constant"
@@ -3839,6 +3946,11 @@
 		"type": "event",
 		"line": 1,
 		"ch": [7, 15]
+	},
+	"while () {}": {
+		"type": "event",
+		"line": 0,
+		"ch": 7
 	},
 	"width": {
 		"type": "constant"
