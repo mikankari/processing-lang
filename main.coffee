@@ -84,7 +84,7 @@ define (require, exports, module) ->
 
 	LanguageManager.defineLanguage "processing", {
 		"name": "Processing"
-		"mode": "clike"
+		"mode": ["clike", "text/x-java"]
 		"fileExtensions": ["pde"]
 		"blockComment": ["/*", "*/"]
 		"lineComment": ["//"]
@@ -92,6 +92,8 @@ define (require, exports, module) ->
 
 	preferences = PreferencesManager.getExtensionPrefs extension_id
 	preferences.definePreference "executable", "string", "/usr/local/bin/processing-java"
+
+	PreferencesManager.definePreference "codehint.ProcessingCodeHints", "boolean", true
 
 	domain = new NodeDomain "#{extension_id}-run", "#{extension_path}domain"
 
@@ -113,7 +115,7 @@ define (require, exports, module) ->
 	menu = Menus.addMenu "Processing", extension_id, Menus.AFTER, Menus.AppMenuBar.NAVIGATE_MENU
 	menu.addMenuItem "#{extension_id}-new", null
 	menu.addMenuDivider()
-	menu.addMenuItem "#{extension_id}-run", null
+	menu.addMenuItem "#{extension_id}-run", "F8"
 	menu.addMenuItem "#{extension_id}-stop", null
 
 	panel = WorkspaceManager.createBottomPanel "#{extension_id}-panel", createPanel(), 100
