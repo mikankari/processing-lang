@@ -1,6 +1,7 @@
 define (require, exports, module) ->
 
 	ExtensionUtils = brackets.getModule "utils/ExtensionUtils"
+	AppInit = brackets.getModule "utils/AppInit"
 	LanguageManager = brackets.getModule "language/LanguageManager"
 	PreferencesManager = brackets.getModule "preferences/PreferencesManager"
 	NodeDomain = brackets.getModule "utils/NodeDomain"
@@ -82,43 +83,43 @@ define (require, exports, module) ->
 	stopSketchHandler = ->
 		domain.exec "stop"
 
-	LanguageManager.defineLanguage "processing", {
-		"name": "Processing"
-		"mode": ["clike", "text/x-java"]
-		"fileExtensions": ["pde"]
-		"blockComment": ["/*", "*/"]
-		"lineComment": ["//"]
-	}
+	AppInit.appReady ->
+		LanguageManager.defineLanguage "processing", {
+			"name": "Processing"
+			"mode": ["clike", "text/x-java"]
+			"fileExtensions": ["pde"]
+			"blockComment": ["/*", "*/"]
+			"lineComment": ["//"]
+		}
 
-	preferences = PreferencesManager.getExtensionPrefs extension_id
-	preferences.definePreference "executable", "string", "/usr/local/bin/processing-java"
+		preferences = PreferencesManager.getExtensionPrefs extension_id
+		preferences.definePreference "executable", "string", "/usr/local/bin/processing-java"
 
-	PreferencesManager.definePreference "codehint.ProcessingCodeHints", "boolean", true
+		PreferencesManager.definePreference "codehint.ProcessingCodeHints", "boolean", true
 
-	domain = new NodeDomain "#{extension_id}-run", "#{extension_path}domain"
+		domain = new NodeDomain "#{extension_id}-run", "#{extension_path}domain"
 
-	domain.on "data", (event, data) ->
-		$ "##{extension_id} .console"
-			.append "<div>#{secureOutput data}</div>"
+		domain.on "data", (event, data) ->
+			$ "##{extension_id} .console"
+				.append "<div>#{secureOutput data}</div>"
 
-	domain.on "error", (event, error) ->
-		$ "##{extension_id} .console"
-			.append "<div class=\"text-danger\">#{secureOutput error}</div>"
+		domain.on "error", (event, error) ->
+			$ "##{extension_id} .console"
+				.append "<div class=\"text-danger\">#{secureOutput error}</div>"
 
-	codehints = new ProcessingCodeHints()
-	CodeHintManager.registerHintProvider codehints, ["processing"], 0
+		codehints = new ProcessingCodeHints()
+		CodeHintManager.registerHintProvider codehints, ["processing"], 0
 
-	CommandManager.register "New Sketch", "#{extension_id}-new", newSketchHandler
-	CommandManager.register "Run", "#{extension_id}-run", runSketchHandler
-	CommandManager.register "Stop", "#{extension_id}-stop", stopSketchHandler
+		CommandManager.register "New Sketch", "#{extension_id}-new", newSketchHandler
+		CommandManager.register "Run", "#{extension_id}-run", runSketchHandler
+		CommandManager.register "Stop", "#{extension_id}-stop", stopSketchHandler
 
-	menu = Menus.addMenu "Processing", extension_id, Menus.AFTER, Menus.AppMenuBar.NAVIGATE_MENU
-	menu.addMenuItem "#{extension_id}-new", null
-	menu.addMenuDivider()
-	menu.addMenuItem "#{extension_id}-run", "F8"
-	menu.addMenuItem "#{extension_id}-stop", null
+		menu = Menus.addMenu "Processing", extension_id, Menus.AFTER, Menus.AppMenuBar.NAVIGATE_MENU
+		menu.addMenuItem "#{extension_id}-new", null
+		menu.addMenuDivider()
+		menu.addMenuItem "#{extension_id}-run", "F7"
+		menu.addMenuItem "#{extension_id}-stop", null
 
-	panel = WorkspaceManager.createBottomPanel "#{extension_id}-panel", createPanel(), 100
+		panel = WorkspaceManager.createBottomPanel "#{extension_id}-panel", createPanel(), 100
 
-	ExtensionUtils.loadStyleSheet module, "panel.css"
-
+		ExtensionUtils.loadStyleSheet module, "panel.css"

@@ -1,7 +1,8 @@
 (function() {
   define(function(require, exports, module) {
-    var CodeHintManager, CommandManager, Commands, DocumentManager, EditorManager, ExtensionUtils, LanguageManager, Menus, NodeDomain, PreferencesManager, ProcessingCodeHints, ProjectManager, WorkspaceManager, codehints, createPanel, domain, extension_id, extension_path, menu, newSketchHandler, panel, preferences, runSketchHandler, secureOutput, securePath, stopSketchHandler;
+    var AppInit, CodeHintManager, CommandManager, Commands, DocumentManager, EditorManager, ExtensionUtils, LanguageManager, Menus, NodeDomain, PreferencesManager, ProcessingCodeHints, ProjectManager, WorkspaceManager, createPanel, extension_id, extension_path, newSketchHandler, runSketchHandler, secureOutput, securePath, stopSketchHandler;
     ExtensionUtils = brackets.getModule("utils/ExtensionUtils");
+    AppInit = brackets.getModule("utils/AppInit");
     LanguageManager = brackets.getModule("language/LanguageManager");
     PreferencesManager = brackets.getModule("preferences/PreferencesManager");
     NodeDomain = brackets.getModule("utils/NodeDomain");
@@ -73,35 +74,38 @@
     stopSketchHandler = function() {
       return domain.exec("stop");
     };
-    LanguageManager.defineLanguage("processing", {
-      "name": "Processing",
-      "mode": ["clike", "text/x-java"],
-      "fileExtensions": ["pde"],
-      "blockComment": ["/*", "*/"],
-      "lineComment": ["//"]
+    return AppInit.appReady(function() {
+      var codehints, domain, menu, panel, preferences;
+      LanguageManager.defineLanguage("processing", {
+        "name": "Processing",
+        "mode": ["clike", "text/x-java"],
+        "fileExtensions": ["pde"],
+        "blockComment": ["/*", "*/"],
+        "lineComment": ["//"]
+      });
+      preferences = PreferencesManager.getExtensionPrefs(extension_id);
+      preferences.definePreference("executable", "string", "/usr/local/bin/processing-java");
+      PreferencesManager.definePreference("codehint.ProcessingCodeHints", "boolean", true);
+      domain = new NodeDomain("" + extension_id + "-run", "" + extension_path + "domain");
+      domain.on("data", function(event, data) {
+        return $("#" + extension_id + " .console").append("<div>" + (secureOutput(data)) + "</div>");
+      });
+      domain.on("error", function(event, error) {
+        return $("#" + extension_id + " .console").append("<div class=\"text-danger\">" + (secureOutput(error)) + "</div>");
+      });
+      codehints = new ProcessingCodeHints();
+      CodeHintManager.registerHintProvider(codehints, ["processing"], 0);
+      CommandManager.register("New Sketch", "" + extension_id + "-new", newSketchHandler);
+      CommandManager.register("Run", "" + extension_id + "-run", runSketchHandler);
+      CommandManager.register("Stop", "" + extension_id + "-stop", stopSketchHandler);
+      menu = Menus.addMenu("Processing", extension_id, Menus.AFTER, Menus.AppMenuBar.NAVIGATE_MENU);
+      menu.addMenuItem("" + extension_id + "-new", null);
+      menu.addMenuDivider();
+      menu.addMenuItem("" + extension_id + "-run", "F7");
+      menu.addMenuItem("" + extension_id + "-stop", null);
+      panel = WorkspaceManager.createBottomPanel("" + extension_id + "-panel", createPanel(), 100);
+      return ExtensionUtils.loadStyleSheet(module, "panel.css");
     });
-    preferences = PreferencesManager.getExtensionPrefs(extension_id);
-    preferences.definePreference("executable", "string", "/usr/local/bin/processing-java");
-    PreferencesManager.definePreference("codehint.ProcessingCodeHints", "boolean", true);
-    domain = new NodeDomain("" + extension_id + "-run", "" + extension_path + "domain");
-    domain.on("data", function(event, data) {
-      return $("#" + extension_id + " .console").append("<div>" + (secureOutput(data)) + "</div>");
-    });
-    domain.on("error", function(event, error) {
-      return $("#" + extension_id + " .console").append("<div class=\"text-danger\">" + (secureOutput(error)) + "</div>");
-    });
-    codehints = new ProcessingCodeHints();
-    CodeHintManager.registerHintProvider(codehints, ["processing"], 0);
-    CommandManager.register("New Sketch", "" + extension_id + "-new", newSketchHandler);
-    CommandManager.register("Run", "" + extension_id + "-run", runSketchHandler);
-    CommandManager.register("Stop", "" + extension_id + "-stop", stopSketchHandler);
-    menu = Menus.addMenu("Processing", extension_id, Menus.AFTER, Menus.AppMenuBar.NAVIGATE_MENU);
-    menu.addMenuItem("" + extension_id + "-new", null);
-    menu.addMenuDivider();
-    menu.addMenuItem("" + extension_id + "-run", "F8");
-    menu.addMenuItem("" + extension_id + "-stop", null);
-    panel = WorkspaceManager.createBottomPanel("" + extension_id + "-panel", createPanel(), 100);
-    return ExtensionUtils.loadStyleSheet(module, "panel.css");
   });
 
 }).call(this);
