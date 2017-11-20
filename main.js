@@ -1,6 +1,6 @@
 (function() {
   define(function(require, exports, module) {
-    var AppInit, CodeHintManager, CommandManager, Commands, DocumentManager, EditorManager, ExtensionUtils, LanguageManager, Menus, NodeDomain, PreferencesManager, ProcessingCodeHints, ProjectManager, WorkspaceManager, createPanel, extension_id, extension_path, newSketchHandler, preferences, runSketchHandler, secureOutput, securePath, stopSketchHandler;
+    var AppInit, CodeHintManager, CommandManager, Commands, DocumentManager, EditorManager, ExtensionUtils, LanguageManager, Menus, NodeDomain, PreferencesManager, ProcessingCodeHints, ProjectManager, WorkspaceManager, codehints, createPanel, domain, extension_id, extension_path, menu, newSketchHandler, panel, preferences, runSketchHandler, secureOutput, securePath, stopSketchHandler;
     ExtensionUtils = brackets.getModule("utils/ExtensionUtils");
     AppInit = brackets.getModule("utils/AppInit");
     LanguageManager = brackets.getModule("language/LanguageManager");
@@ -18,6 +18,10 @@
     extension_id = "processing_lang";
     extension_path = ExtensionUtils.getModulePath(module);
     preferences = null;
+    domain = null;
+    codehints = null;
+    menu = null;
+    panel = null;
     createPanel = function() {
       return $(require("text!panel.html")).find(".close").on("click", function() {
         return panel.hide();
@@ -76,7 +80,6 @@
       return domain.exec("stop");
     };
     return AppInit.appReady(function() {
-      var codehints, domain, menu, panel;
       LanguageManager.defineLanguage("processing", {
         "name": "Processing",
         "mode": ["clike", "text/x-java"],

@@ -19,6 +19,10 @@ define (require, exports, module) ->
 	extension_id = "processing_lang"
 	extension_path = ExtensionUtils.getModulePath module
 	preferences = null
+	domain = null
+	codehints = null
+	menu = null
+	panel = null
 
 	createPanel = ->
 		$ require "text!panel.html"
