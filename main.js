@@ -1,6 +1,6 @@
 (function() {
   define(function(require, exports, module) {
-    var AppInit, CodeHintManager, CommandManager, Commands, DocumentManager, EditorManager, ExtensionUtils, LanguageManager, Menus, NodeDomain, PreferencesManager, ProcessingCodeHints, ProjectManager, WorkspaceManager, codehints, createPanel, domain, extension_id, extension_path, menu, newSketchHandler, panel, preferences, runSketchHandler, secureOutput, securePath, stopSketchHandler;
+    var AppInit, CodeHintManager, CommandManager, Commands, Dialogs, DocumentManager, EditorManager, ExtensionUtils, LanguageManager, Menus, NodeDomain, PreferencesManager, ProcessingCodeHints, ProjectManager, WorkspaceManager, codehints, configHandler, createConfigDialog, createPanel, domain, extension_id, extension_path, menu, newSketchHandler, panel, preferences, runSketchHandler, secureOutput, securePath, stopSketchHandler;
     ExtensionUtils = brackets.getModule("utils/ExtensionUtils");
     AppInit = brackets.getModule("utils/AppInit");
     LanguageManager = brackets.getModule("language/LanguageManager");
@@ -9,6 +9,7 @@
     CodeHintManager = brackets.getModule("editor/CodeHintManager");
     DocumentManager = brackets.getModule("document/DocumentManager");
     EditorManager = brackets.getModule("editor/EditorManager");
+    Dialogs = brackets.getModule("widgets/Dialogs");
     CommandManager = brackets.getModule("command/CommandManager");
     Commands = brackets.getModule("command/Commands");
     Menus = brackets.getModule("command/Menus");
@@ -25,6 +26,13 @@
     createPanel = function() {
       return $(require("text!panel.html")).find(".close").on("click", function() {
         return panel.hide();
+      }).end();
+    };
+    createConfigDialog = function() {
+      return $(require("text!config.html")).find("#processing_lang-executable").val(preferences.get("executable")).end().find(".primary").on("click", function() {
+        var value;
+        value = $("#processing_lang-executable").val();
+        return preferences.set("executable", value);
       }).end();
     };
     securePath = function(path) {
@@ -79,6 +87,9 @@
     stopSketchHandler = function() {
       return domain.exec("stop");
     };
+    configHandler = function() {
+      return Dialogs.showModalDialogUsingTemplate(createConfigDialog());
+    };
     return AppInit.appReady(function() {
       LanguageManager.defineLanguage("processing", {
         "name": "Processing",
@@ -102,11 +113,14 @@
       CommandManager.register("New Sketch", "" + extension_id + "-new", newSketchHandler);
       CommandManager.register("Run", "" + extension_id + "-run", runSketchHandler);
       CommandManager.register("Stop", "" + extension_id + "-stop", stopSketchHandler);
+      CommandManager.register("Config", "" + extension_id + "-config", configHandler);
       menu = Menus.addMenu("Processing", extension_id, Menus.AFTER, Menus.AppMenuBar.NAVIGATE_MENU);
       menu.addMenuItem("" + extension_id + "-new", null);
       menu.addMenuDivider();
       menu.addMenuItem("" + extension_id + "-run", "F7");
       menu.addMenuItem("" + extension_id + "-stop", null);
+      menu.addMenuDivider();
+      menu.addMenuItem("" + extension_id + "-config", null);
       panel = WorkspaceManager.createBottomPanel("" + extension_id + "-panel", createPanel(), 100);
       return ExtensionUtils.loadStyleSheet(module, "panel.css");
     });

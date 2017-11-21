@@ -8,6 +8,7 @@ define (require, exports, module) ->
 	CodeHintManager = brackets.getModule "editor/CodeHintManager"
 	DocumentManager = brackets.getModule "document/DocumentManager"
 	EditorManager = brackets.getModule "editor/EditorManager"
+	Dialogs = brackets.getModule "widgets/Dialogs"
 	CommandManager = brackets.getModule "command/CommandManager"
 	Commands = brackets.getModule "command/Commands"
 	Menus = brackets.getModule "command/Menus"
@@ -29,6 +30,18 @@ define (require, exports, module) ->
 			.find ".close"
 			.on "click", ->
 				panel.hide()
+			.end()
+
+	createConfigDialog = ->
+		$ require "text!config.html"
+			.find "#processing_lang-executable"
+			.val preferences.get "executable"
+			.end()
+			.find ".primary"
+			.on "click", ->
+				value = $ "#processing_lang-executable"
+					.val()
+				preferences.set "executable", value
 			.end()
 
 	securePath = (path) ->
@@ -88,6 +101,9 @@ define (require, exports, module) ->
 	stopSketchHandler = ->
 		domain.exec "stop"
 
+	configHandler = ->
+		Dialogs.showModalDialogUsingTemplate createConfigDialog()
+
 	AppInit.appReady ->
 		LanguageManager.defineLanguage "processing", {
 			"name": "Processing"
@@ -118,12 +134,15 @@ define (require, exports, module) ->
 		CommandManager.register "New Sketch", "#{extension_id}-new", newSketchHandler
 		CommandManager.register "Run", "#{extension_id}-run", runSketchHandler
 		CommandManager.register "Stop", "#{extension_id}-stop", stopSketchHandler
+		CommandManager.register "Config", "#{extension_id}-config", configHandler
 
 		menu = Menus.addMenu "Processing", extension_id, Menus.AFTER, Menus.AppMenuBar.NAVIGATE_MENU
 		menu.addMenuItem "#{extension_id}-new", null
 		menu.addMenuDivider()
 		menu.addMenuItem "#{extension_id}-run", "F7"
 		menu.addMenuItem "#{extension_id}-stop", null
+		menu.addMenuDivider()
+		menu.addMenuItem "#{extension_id}-config", null
 
 		panel = WorkspaceManager.createBottomPanel "#{extension_id}-panel", createPanel(), 100
 
